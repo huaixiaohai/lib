@@ -43,6 +43,8 @@ func Init(c *Cfg) {
 }
 
 var (
+	Panic = instance.Panic
+	Panicf = instance.Panicf
 	Printf  = instance.Printf
 	Println = instance.Println
 	Info    = instance.Info
