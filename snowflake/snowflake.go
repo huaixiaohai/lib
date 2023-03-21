@@ -1,6 +1,7 @@
 package snowflake
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/sony/sonyflake"
@@ -17,11 +18,28 @@ func init() {
 	}
 }
 
-// Get unique id from Twitter's Snowflake
-func MustID() uint64 {
+//// Get unique id from Twitter's Snowflake
+//func MustID() uint64 {
+//	id, err := sf.NextID()
+//	if err == nil {
+//		return id
+//	}
+//
+//	sleep := 1
+//	for {
+//		time.Sleep(time.Duration(sleep) * time.Millisecond)
+//		id, err := sf.NextID()
+//		if err == nil {
+//			return id
+//		}
+//		sleep *= 2
+//	}
+//}
+
+func MustID() string {
 	id, err := sf.NextID()
 	if err == nil {
-		return id
+		return strconv.FormatUint(id, 10)
 	}
 
 	sleep := 1
@@ -29,7 +47,7 @@ func MustID() uint64 {
 		time.Sleep(time.Duration(sleep) * time.Millisecond)
 		id, err := sf.NextID()
 		if err == nil {
-			return id
+			return strconv.FormatUint(id, 10)
 		}
 		sleep *= 2
 	}
