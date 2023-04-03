@@ -42,6 +42,10 @@ func Init(c *Cfg) {
 	}
 }
 
+func GetInstance() *logrus.Logger {
+	return instance
+}
+
 var (
 	Panic = instance.Panic
 	Panicf = instance.Panicf
